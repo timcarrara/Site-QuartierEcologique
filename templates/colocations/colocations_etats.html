@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>États Colocations</title>
+{% endblock %}
+
+{% block content %}
+<br>
+<h1 style="margin-left:2%">Colocations</h1>
+
+<form action="/filtre/valid" method="post" style="width:15%; margin-left:5%; margin-top:1%;">
+    <div>
+        {% for coloc in colocations %}
+        <input type="radio" name="col" id="{{ coloc.id_coloc }}" value="{{ coloc.id_coloc }}" required>
+        <label>{{ coloc.id_coloc }}: {{ coloc.remarque }}</label>
+        <br>
+        {% endfor %}
+    </div>
+    <br>
+    <div style="text-align:center;">
+        <button type="submit" class="btn btn-outline-secondary" name="valider"><img src="/static/valider.svg" alt="bouton  valider" style="width:1.5rem;"></button>
+    </div>
+</form>
+
+<hr style="width:98%;margin-left:1%;">
+<h1 style="margin-left:2%"></h1>
+<br>
+<table class="table table-secondary table-striped" style="width:90%; margin-left:5%;">
+    <tr style="text-align:center;">
+        <th>identifiant</th><th>date début</th><th>remarque</th><th>numéro locataire</th><th>contrat</th>
+    </tr>
+    {% for coloc in colocations %}
+    <tr style="text-align:center; vertical-align:middle;">
+        <td>{{ coloc.id_coloc }}</td>
+        <td>{{ coloc.date_debut }}</td>
+        <td>{{ coloc.remarque }}</td>
+        <td>{{ coloc.num_locataire }}</td>
+        <td>{{ coloc.num_contrat }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

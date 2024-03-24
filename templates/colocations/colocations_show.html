@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>Colocations</title>
+{% endblock %}
+
+{% block content %}
+<br>
+<h1 style="margin-left:2%">liste des colocations</h1>
+<br>
+<a type="button" class="btn btn-outline-primary" href="/add/coloc" style="margin-left:5%; margin-bottom:2%;">ajouter</a>
+<br>
+<table class="table table-secondary table-striped" style="width:90%; margin-left:5%;">
+    <tr style="text-align:center;">
+        <th>identifiant</th><th>date début</th><th>remarque</th><th>numéro locataire</th><th>contrat</th><th>opérations</th>
+    </tr>
+    {% for coloc in colocations %}
+    <tr style="text-align:center; vertical-align:middle;">
+        <td>{{ coloc.id_coloc }}</td>
+        <td>{{ coloc.date_debut }}</td>
+        <td>{{ coloc.remarque }}</td>
+        <td>{{ coloc.num_locataire }}</td>
+        <td>{{ coloc.num_contrat }}</td>
+        <td><a type="button" class="btn btn-outline-warning" href="/edit/coloc?id={{ coloc.id_coloc }}">éditer</a>
+            <a type="button" class="btn btn-outline-danger" href="/delete/coloc?id={{ coloc.id_coloc }}" style="margin:3%;">supprimer</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

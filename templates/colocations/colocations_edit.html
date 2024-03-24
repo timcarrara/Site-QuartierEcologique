@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>Modifier Colocation</title>
+{% endblock %}
+
+{% block content %}
+<form action="/coloc/edit" method="post" style="width:50%; margin-left:25%; margin-top:5%;">
+    <div>
+        <input type="hidden" name="id" value="{{ id }}">
+        <label for="date" class="form-label">Date de début:</label>
+        <input type="date" class="form-control" name="date" id="date" required placeholder="date de début de la colocation" value="{{ colocation.date_debut }}">
+        <br>
+        <label for="remarque" class="form-label">Remarque:</label>
+        <input type="text" class="form-control" name="remarque" id="remarque" required placeholder="remarque à propos de la colocation" value="{{ colocation.remarque }}">
+        <br>
+
+        <label for="numLoc" class="form-label">Numéro de locataire:</label>
+        <select name="numLoc" id="numLoc" class="form-control" required>
+            {% for loc in locataire %}
+            <option value="{{ loc.num_locataire }}" {% if loc.num_locataire == colocation.locataire %}selected{% endif %}>{{ loc.num_locataire }}: {{ loc.prenom }} {{ loc.nom }}</option>
+            {% endfor %}
+        </select>
+        <br>
+
+        <label for="numContrat" class="form-label">Numéro de contrat:</label>
+        <select name="numContrat" id="numContrat" class="form-control" required>
+            {% for cont in contrat %}
+            <option value="{{ cont.num_contrat }}" {% if cont.num_contrat == colocation.contrat %}selected{% endif %}>{{ cont.num_contrat }}: {{ cont.charges }}€</option>
+            {% endfor %}
+        </select>
+
+    </div>
+    <br><br>
+    <div style="text-align:center;">
+        <button type="submit" class="btn btn-outline-secondary btn-lg" name="valider" style="margin: 2%;"><img src="/static/valider.svg" alt="bouton  valider" style="width:1.5rem;"></button>
+        <button type="reset" class="btn btn-outline-secondary btn-lg" name="reset" style="margin: 2%;"><img src="/static/reset.svg" alt="bouton annuler" style="width:1.5rem;"></button>
+    </div>
+</form>
+{% endblock %}

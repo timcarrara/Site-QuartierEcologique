@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>Contrats</title>
+{% endblock %}
+
+{% block content %}
+<br>
+<h1 style="margin-left:2%">Liste des contrats</h1>
+<br>
+<a type="button" class="btn btn-outline-primary" href="/add/contrats" style="margin-left:5%; margin-bottom:2%;">ajouter</a>
+<br>
+<table class="table table-secondary table-striped" style="width:90%; margin-left:5%;">
+    <tr style="text-align:center;">
+        <th>identifiant de contrat</th><th>date début</th><th>date fin</th><th>charges</th><th>numéro locataire</th><th>opérations</th>
+    </tr>
+    {% for cont in contrats %}
+    <tr style="text-align:center; vertical-align:middle;">
+        <td>{{ cont.num_contrat }}</td>
+        <td>{{ cont.date_debut }}</td>
+        <td>{{ cont.date_fin }}</td>
+        <td>{{ cont.charges }}</td>
+        <td>{{ cont.num_locataire }}</td>
+        <td><a type="button" class="btn btn-outline-warning" href="/edit/contrats?id={{ cont.num_contrat }}">éditer</a>
+            <a type="button" class="btn btn-outline-danger" href="/delete/contrats?id={{ cont.num_contrat }}" style="margin:3%;">supprimer</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

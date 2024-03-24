@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>Ajouter Contrats</title>
+{% endblock %}
+
+{% block content %}
+<form action="/contrats/add" method="post" style="width:50%; margin-left:25%; margin-top:5%;">
+    <div>
+        <label for="date_debut" class="form-label">Date de début:</label>
+        <input type="date" class="form-control" name="date_debut" id="date_debut" required placeholder="date de début du contrat">
+        <br>
+
+        <label for="date_fin" class="form-label">Date de fin:</label>
+        <input type="date" class="form-control" name="date_fin" id="date_fin" required placeholder="date de fin du contrat">
+        <br>
+
+        <label for="charges" class="form-label">Charges:</label>
+        <input type="quantite" class="form-control" name="charges" id="charges" required placeholder="charges du contrat">
+        <br>
+        
+
+
+        <label for="num_locataire" class="form-label">Numéro de locataire:</label>
+        <select name="num_locataire" id="num_locataire" class="form-control" required>
+            <option value="" disabled selected hidden>identifiant du locataire</option>
+            {% for coloc in contratss %}
+            <option value="{{ coloc.num_locataire }}">{{ coloc.num_locataire }}</option>
+            {% endfor %}
+        </select>
+        <br>
+
+
+
+
+    </div>
+    <br><br>
+    <div style="text-align:center;">
+        <button type="submit" class="btn btn-outline-secondary btn-lg" name="valider" style="margin: 2%;"><img src="/static/valider.svg" alt="bouton  valider" style="width:1.5rem;"></button>
+        <button type="reset" class="btn btn-outline-secondary btn-lg" name="reset" style="margin: 2%;"><img src="/static/reset.svg" alt="bouton annuler" style="width:1.5rem;"></button>
+    </div>
+</form>
+
+{% endblock %}

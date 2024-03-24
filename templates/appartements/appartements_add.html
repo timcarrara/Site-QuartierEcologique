@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>Ajouter Appartement</title>
+{% endblock %}
+
+{% block content %}
+<form action="/appart/add" method="post" style="width:50%; margin-left:25%; margin-top:5%;">
+    <div>
+        <label for="surface" class="form-label">Surface:</label>
+        <input type="number" step="0.1" class="form-control" name="surface" id="surface" required placeholder="surface de l'appartement en m²">
+        <br>
+        <label for="loyer" class="form-label">Loyer:</label>
+        <input type="number" step="0.1" class="form-control" name="loyer" id="loyer" required placeholder="loyer mensuel de l'appartement en €">
+        <br>
+        <label for="etage" class="form-label">Étage:</label>
+        <input type="number" class="form-control" name="etage" id="etage" required placeholder="étage auquel est situé l'appartement">
+        <br>
+
+        <label for="id_type" class="form-label">Type d'appartement:</label>
+        <select name="id_type" id="id_type" class="form-control" required>
+            <option value="" disabled selected hidden>type en fonction du nomre de pièces</option>
+            {% for tAppart in typeAppart %}
+            <option value="{{ tAppart.id_type }}">{{ tAppart.id_type }}: {{ tAppart.libelle }}</option>
+            {% endfor %}
+        </select>
+        <br>
+
+        <label for="num_bat" class="form-label">Bâtiment:</label>
+        <select name="num_bat" id="num_bat" class="form-control" required>
+            <option value="" disabled selected hidden>bâtiment où est situé l'appartement</option>
+            {% for bat in batiment %}
+            <option value="{{ bat.num_bat }}">{{ bat.num_bat }}: {{ bat.nom }}</option>
+            {% endfor %}
+        </select>
+
+    </div>
+    <br><br>
+    <div style="text-align:center;">
+        <button type="submit" class="btn btn-outline-secondary btn-lg" name="valider" style="margin: 2%;"><img src="/static/valider.svg" alt="bouton  valider" style="width:1.5rem;"></button>
+        <button type="reset" class="btn btn-outline-secondary btn-lg" name="reset" style="margin: 2%;"><img src="/static/reset.svg" alt="bouton annuler" style="width:1.5rem;"></button>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>modifié un Competeur</title>
+{% endblock %}
+
+{% block content %}
+<br>
+<h1 style="margin-left:2%">Etats</h1>
+<br>
+<br>
+<h3 style="text-align: center">Utilisation de données</h3>
+<table class="table table-secondary table-striped" style="width:90%; margin-left:5%;">
+    <tr style="text-align:center;">
+        <th>Moyenne de Kwh au mètre carré pour les batiments a l'année</th>
+    </tr>
+    {% for conp1 in compteur %}
+    <tr style="text-align:center; vertical-align:middle;">
+        <td>{{ conp1.ratio_surface_kwh }}</td>
+
+
+    </tr>
+    {% endfor %}
+
+</table>
+<br>
+<center><h3>Moyenne d'eau de tout les batiments</h3></center>
+<table class="table table-secondary table-striped" style="width:90%; margin-left:5%;">
+    <tr style="text-align:center;">
+        <th>Moyenne d'eau</th>
+    </tr>
+    {% for comp2 in compteur1 %}
+    <tr style="text-align:center; vertical-align:middle;">
+        <td>{{ comp2.moyenne_compteur_eau}}</td>
+
+
+    </tr>
+    {% endfor %}
+
+</table>
+</table>
+<br>
+<center><h3>Les id de relevé des compteurs supérieur a la moyenne francaise</h3></center>
+<table class="table table-secondary table-striped" style="width:90%; margin-left:5%;">
+    <tr style="text-align:center;">
+        <th>Moyenne d'eau</th><th> id_releve</th>
+    </tr>
+    {% for comp3 in compteur2 %}
+    <tr style="text-align:center; vertical-align:middle;">
+        <td>{{ comp3.litre_eau}}
+        </td>
+        <td>
+        {{ comp3.id_releve}}
+        </td>
+
+
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}

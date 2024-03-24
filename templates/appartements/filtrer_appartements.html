@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>Appartements</title>
+{% endblock %}
+
+{% block content %}
+<br>
+<h1 style="margin-left:2%">Etat des appartements</h1>
+<br>
+
+
+
+<br>
+<h3 style="text-align: center">Recap des données de chaque appartement</h3>
+<table class="table table-secondary table-striped" style="width:90%; margin-left:5%;">
+    <tr style="text-align:center;">
+        <th>numéro d'appartement</th><th>typre d'appartement</th><th>surface</th><th>loyer</th><th>loyer par surface</th><th>étage</th><th>numéro de bâtiment</th>
+    </tr>
+    {% for cont1 in appartement %}
+    <tr style="text-align:center; vertical-align:middle;">
+        <td>{{ cont1.num_appart }}</td>
+        <td>{{ cont1.libelle }}</td>
+        <td>{{ cont1.surface }}</td>
+        <td>{{ cont1.loyer }}</td>
+        <td>{{ cont1.loyer_surface }}</td>
+        <td>{{ cont1.etage }}</td>
+        <td>{{ cont1.num_bat }}</td>
+
+
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+
+<br>
+<h3 style="text-align: center">Recap des données par types d'appartement</h3>
+<table class="table table-secondary table-striped" style="width:90%; margin-left:5%;">
+    <tr style="text-align:center;">
+        <th>type d'appartement</th><th>somme de loyer</th><th>moyenne de loyer</th>
+    </tr>
+    {% for cont2 in appartement2 %}
+    <tr style="text-align:center; vertical-align:middle;">
+        <td>{{ cont2.libelle }}</td>
+        <td>{{ cont2.total_loyer }}</td>
+        <td>{{ cont2.moyenne_loyer }}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+<br>
+<h3 style="text-align: center">Recap des données des appartements</h3>
+<table class="table table-secondary table-striped" style="width:90%; margin-left:5%;">
+    <tr style="text-align:center;">
+        <th>nombre d'appartements</th><th>somme des loyers</th><th>moyenne des loyers</th><th>total des surfaces</th><th>moyenne des surfaces</th>
+    </tr>
+    {% for cont3 in appartement3 %}
+    <tr style="text-align:center; vertical-align:middle;">
+        <td>{{ cont3.total_appartements }}</td>
+        <td>{{ cont3.total_loyer }}</td>
+        <td>{{ cont3.moyenne_loyer }}</td>
+        <td>{{ cont3.total_surface }}</td>
+        <td>{{ cont3.moyenne_surface }}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>Ajouter un Competeur</title>
+{% endblock %}
+
+{% block content %}
+<form action="/compteursMensuels/add" method="post" style="width:50%; margin-left:25%; margin-top:5%;">
+    <div>
+        <label for="kwh" class="form-label">kw_h_elec:</label>
+        <input type="number" class="form-control" name="kwh" id="kwh" la quantité de kwh="date de début de la colocation">
+        <br>
+        <label for="dechets" class="form-label">quantite_dechets:</label>
+        <input type="number" class="form-control" name="dechets" id="dechets" kilo de dechets="remarque à propos de la colocation">
+        <br>
+        <label for="date" class="form-label">date releve:</label>
+        <input type="date" class="form-control" name="date" id="date" date de relevé="remarque à propos de la colocation">
+        <br>
+        <label for="litre_eau" class="form-label">litre_eau:</label>
+        <input type="number" class="form-control" name="litre_eau" id="litre_eau" litre_eau="remarque à propos de la colocation">
+        <br>
+
+        <label for="numBat" class="form-label">Numéro de batiemnt:</label>
+        <select name="numBat" id="numBat" class="form-control" required>
+            <option value="" disabled selected hidden>batiments concerné</option>
+            {% for bat in batiments %}
+            <option value="{{ bat.num_bat }}">{{ bat.num_bat }}</option>
+            {% endfor %}
+        </select>
+        <br>
+
+    </div>
+    <br><br>
+    <div style="text-align:center;">
+        <button type="submit" class="btn btn-outline-secondary btn-lg" name="valider" style="margin: 2%;"><img src="/static/valider.svg" alt="bouton  valider" style="width:1.5rem;"></button>
+        <button type="reset" class="btn btn-outline-secondary btn-lg" name="reset" style="margin: 2%;"><img src="/static/reset.svg" alt="bouton annuler" style="width:1.5rem;"></button>
+    </div>
+</form>
+{% endblock %}

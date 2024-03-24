@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>Colocations</title>
+{% endblock %}
+
+{% block content %}
+<br>
+<h1 style="margin-left:2%">liste des compteurs</h1>
+<br>
+<a type="button" class="btn btn-outline-primary" href="/compteursMensuels/add" style="margin-left:5%; margin-bottom:2%;">ajouter</a>
+<br>
+<table class="table table-secondary table-striped" style="width:90%; margin-left:5%;">
+    <tr style="text-align:center;">
+        <th>id_releve</th><th>kw_h_elec</th><th>quantite_dechets</th><th>date_releve</th><th>litre_eau</th><th>num_bat</th><th>opération</th>
+    </tr>
+    {% for compteur in compteur %}
+    <tr style="text-align:center; vertical-align:middle;">
+        <td>{{ compteur.id_releve }}</td>
+        <td>{{ compteur.kw_h_elec }}</td>
+        <td>{{ compteur.quantite_dechets }}</td>
+        <td>{{ compteur.date_releve }}</td>
+        <td>{{ compteur.litre_eau }}</td>
+        <td>{{ compteur.num_bat }}</td>
+        <td><a type="button" class="btn btn-outline-warning" href="/compteursMensuels/edit?id={{ compteur.id_releve }}">éditer</a>
+            <a type="button" class="btn btn-outline-danger" href="/delete/compteur/{{ compteur.id_releve }}" style="margin:3%;">supprimer</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

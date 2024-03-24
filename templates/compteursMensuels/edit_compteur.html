@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>modifié un Competeur</title>
+{% endblock %}
+
+{% block content %}
+<form action="/compteursMensuels/edit" method="post" style="width:50%; margin-left:25%; margin-top:5%;">
+    <div>
+        <input type="hidden" class="form-control" name="id_releve" id="id_releve" value="{{ id_releve }}">
+        <label for="kwh" class="form-label">kw_h_elec:</label>
+        <input type="number" class="form-control" name="kwh" id="kwh" value="{{ CompteursMensuels.kw_h_elec }}">
+        <br>
+        <label for="dechets" class="form-label">quantite_dechets:</label>
+        <input type="number" class="form-control" name="dechets" id="dechets" value="{{ CompteursMensuels.quantite_dechets }}">
+        <br>
+        <label for="date" class="form-label">date releve:</label>
+        <input type="date" class="form-control" name="date" id="date" value="{{ CompteursMensuels.date_releve }}">
+        <br>
+        <label for="litre_eau" class="form-label">litre_eau:</label>
+        <input type="number" class="form-control" name="litre_eau" id="litre_eau" value="{{ CompteursMensuels.litre_eau }}">
+        <br>
+
+        <label for="numBat" class="form-label">Numéro de batiemnt:</label>
+        <select name="numBat" id="numBat" class="form-control" required>
+            {% for bat in batiments %}
+            <option value="{{ bat.num_bat }}" {% if bat.num_bat == CompteursMensuels.num_bat %}selected{% endif %}>{{ bat.num_bat }}</option>
+            {% endfor %}
+        </select>
+        <br>
+
+    </div>
+    <br><br>
+    <div style="text-align:center;">
+        <button type="submit" class="btn btn-outline-secondary btn-lg" name="valider" style="margin: 2%;"><img src="/static/valider.svg" alt="bouton  valider" style="width:1.5rem;"></button>
+        <button type="reset" class="btn btn-outline-secondary btn-lg" name="reset" style="margin: 2%;"><img src="/static/reset.svg" alt="bouton annuler" style="width:1.5rem;"></button>
+    </div>
+</form>
+{% endblock %}

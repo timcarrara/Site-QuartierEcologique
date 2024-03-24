@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% block title %}
+        <title>Accueil</title>
+    {% endblock %}
+    <link rel="shortcut icon" href="/static/leaf.png">
+    <link rel="stylesheet" href="/static/bootstrap/bootstrap.css">
+</head>
+<body>
+    {% include '_nav.html' %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for categorie, message in messages %}
+        <div role="alert" class="alert {{ categorie }}" style="margin-top:2%;">
+               <strong>{{ message }}</strong>
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    {% block content %}
+        <h1 style="text-align:center;margin-top:7%;">S1.A2 Groupe.5</h1>
+        <h2 style="text-align:center;margin-bottom:3%">Gestion d'un éco-quartier</h2>
+        <img src="/static/img_eco.jpg" style="width:100%;">
+    {% endblock %}
+
+    <script src="/static/bootstrap/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>Contrats</title>
+{% endblock %}
+
+{% block content %}
+<br>
+<h1 style="margin-left:2%">Etat des contrats</h1>
+<br>
+
+
+
+<br>
+<h3 style="text-align: center">Recap des données des contrats</h3>
+<table class="table table-secondary table-striped" style="width:90%; margin-left:5%;">
+    <tr style="text-align:center;">
+        <th>nombre de contrats</th><th>moyenne des charges</th><th>total des charges</th>
+    </tr>
+    {% for cont1 in contrats %}
+    <tr style="text-align:center; vertical-align:middle;">
+        <td>{{ cont1.nombre_contrat }}</td>
+        <td>{{ cont1.moyenne_charges }}</td>
+        <td>{{ cont1.total_charges }}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+
+<br>
+<br>
+<h3 style="text-align: center">Contrats de colocation avec les détails du locataire</h3>
+<table class="table table-secondary table-striped" style="width:90%; margin-left:5%;">
+    <tr style="text-align:center;">
+        <th>numéro de contrat</th><th>date de début</th><th>date de fin</th><th>montant des charges</th><th>nom</th><th>prénom</th>
+    </tr>
+    {% for cont2 in contrats2 %}
+    <tr style="text-align:center; vertical-align:middle;">
+        <td>{{ cont2.num_contrat }}</td>
+        <td>{{ cont2.date_debut }}</td>
+        <td>{{ cont2.date_fin }}</td>
+        <td>{{ cont2.charges }}</td>
+        <td>{{ cont2.nom }}</td>
+        <td>{{ cont2.prenom }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+<br>
+<br>
+<h3 style="text-align: center">Contrat le moins coûteux</h3>
+<table class="table table-secondary table-striped" style="width:90%; margin-left:5%;">
+    <tr style="text-align:center;">
+        <th>numéro de contrat</th><th>date de début</th><th>date de fin</th><th>montant des charges</th><th>numéro du locataire</th>
+    </tr>
+    {% for cont3 in contrats3 %}
+    <tr style="text-align:center; vertical-align:middle;">
+        <td>{{ cont3.num_contrat }}</td>
+        <td>{{ cont3.date_debut }}</td>
+        <td>{{ cont3.date_fin }}</td>
+        <td>{{ cont3.charges }}</td>
+        <td>{{ cont3.num_locataire }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<br>
+<h3 style="text-align: center">Contrat le plus coûteux</h3>
+<table class="table table-secondary table-striped" style="width:90%; margin-left:5%;">
+    <tr style="text-align:center;">
+        <th>numéro de contrat</th><th>date de début</th><th>date de fin</th><th>montant des charges</th><th>numéro du locataire</th>
+    </tr>
+    {% for cont4 in contrats4 %}
+    <tr style="text-align:center; vertical-align:middle;">
+        <td>{{ cont4.num_contrat }}</td>
+        <td>{{ cont4.date_debut }}</td>
+        <td>{{ cont4.date_fin }}</td>
+        <td>{{ cont4.charges }}</td>
+        <td>{{ cont4.num_locataire }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}

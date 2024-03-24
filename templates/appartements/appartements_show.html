@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>Appartements</title>
+{% endblock %}
+
+{% block content %}
+<br>
+<h1 style="margin-left:2%">liste des appartements</h1>
+<br>
+<a type="button" class="btn btn-outline-primary" href="/add/appart" style="margin-left:5%; margin-bottom:2%;">ajouter</a>
+<br>
+<table class="table table-secondary table-striped" style="width:90%; margin-left:5%;">
+    <tr style="text-align:center;">
+        <th>numéro</th><th>surface</th><th>loyer</th><th>etage</th><th>type</th><th>bâtiment</th><th>opérations</th>
+    </tr>
+    {% for appart in appartements %}
+    <tr style="text-align:center; vertical-align:middle;">
+        <td>{{ appart.num_appart }}</td>
+        <td>{{ appart.surface }}</td>
+        <td>{{ appart.loyer }}</td>
+        <td>{{ appart.etage }}</td>
+        <td>{{ appart.id_type }}</td>
+        <td>{{ appart.num_bat }}</td>
+        <td><a type="button" class="btn btn-outline-warning" href="/edit/appart?id={{ appart.num_appart }}">éditer</a>
+            <a type="button" class="btn btn-outline-danger" href="/delete/appart?id={{ appart.num_appart }}" style="margin:3%;">supprimer</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
